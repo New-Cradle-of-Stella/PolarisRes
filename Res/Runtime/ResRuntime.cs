@@ -16,6 +16,11 @@ namespace Polaris.Res.Runtime
             initialized = true;
             ResHost.EnsureCreated();
             AutoBindScanner.ScanAll();
+
+            // 借用原版资源不涉及挂载目录，所以走独立一遍扫描；放在模组资源之后，
+            // 这样两类字段的绑定顺序和它们的日志顺序一致，排查时不会互相错位。
+            GameResourceBinder.BindAll();
+
             Plugin.Logger.LogInfo("[PolarisRes] Resource runtime initialized.");
         }
     }
