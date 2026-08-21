@@ -71,7 +71,6 @@ namespace Polaris.Res.Mounts
 
                     if (mount.TryResolveCaseInsensitive(relative, out string caseInsensitive, out string actualCasing))
                     {
-                        probeLog.RecordCaseMismatch(relative, actualCasing, mount.RootPath);
                         Plugin.Logger.LogWarning(
                             $"[PolarisRes] {id} matched a file with inconsistent casing: expected \"{relative}\", " +
                             $"found \"{actualCasing}\" (mount {mount.RootPath}). Making the casing consistent is recommended.");

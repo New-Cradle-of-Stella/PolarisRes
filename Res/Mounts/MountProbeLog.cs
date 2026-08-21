@@ -15,7 +15,6 @@ namespace Polaris.Res.Mounts
 
         private readonly ResourceId id;
         private readonly List<MountAttempt> attempts = new List<MountAttempt>();
-        private string caseMismatchHint;
 
         internal MountProbeLog(ResourceId id)
         {
@@ -31,13 +30,6 @@ namespace Polaris.Res.Mounts
         internal void RecordMiss(string relativePath)
         {
             attempts[attempts.Count - 1].MissedCandidates.Add(relativePath);
-        }
-
-        /// <summary>命中大小写不一致的文件时记一句提示，附在最终诊断信息末尾。</summary>
-        internal void RecordCaseMismatch(string expected, string actual, string mountRoot)
-        {
-            caseMismatchHint =
-                $"Hint: directory \"{mountRoot}\" contains files differing only in case -- expected \"{expected}\", found \"{actual}\". Please make the casing consistent.";
         }
 
         internal string BuildMessage()
@@ -61,11 +53,6 @@ namespace Polaris.Res.Mounts
                 {
                     sb.Append("          ").Append(relativePath).AppendLine("   does not exist");
                 }
-            }
-
-            if (caseMismatchHint != null)
-            {
-                sb.AppendLine("  " + caseMismatchHint);
             }
 
             return sb.ToString();

@@ -13,7 +13,7 @@ namespace Polaris.Res.Pxls
     /// </summary>
     public sealed class GamePxlsLease
     {
-        private bool _released;
+        private bool released;
 
         public GamePxlsId Id { get; }
 
@@ -26,16 +26,16 @@ namespace Polaris.Res.Pxls
         /// <summary>原版资源尚未加载时为 <c>null</c>。</summary>
         public XX.MImage Image { get; private set; }
 
-        public bool IsReady => !_released && Character != null;
+        public bool IsReady => !released && Character != null;
 
         /// <summary>借用已经撤销；此后 <see cref="IsReady"/> 恒为 false。</summary>
-        public bool IsReleased => _released;
+        public bool IsReleased => released;
 
         internal GamePxlsLease(GamePxlsId id) => Id = id;
 
         internal void Bind(PxlCharacter character, XX.MImage image)
         {
-            if (_released)
+            if (released)
                 return;
 
             Character = character;
@@ -53,16 +53,21 @@ namespace Polaris.Res.Pxls
         /// </summary>
         public void Release()
         {
-            if (_released)
+            if (released)
                 return;
 
-            _released = true;
+            released = true;
             Character = null;
             Image = null;
             GamePxlsBridge.Forget(this);
         }
 
-        public override string ToString() =>
-            _released ? $"{Id} (released)" : IsReady ? $"{Id} (ready)" : $"{Id} (loading)";
+        public override string ToString()
+        {
+            if (released)
+                return $"{Id} (released)";
+
+            return IsReady ? $"{Id} (ready)" : $"{Id} (loading)";
+        }
     }
 }

@@ -28,7 +28,7 @@ namespace Polaris.Res.Pxls
             if (id.IsEmpty)
                 throw new ArgumentException("Cannot borrow an empty game PXLS id.", nameof(id));
 
-            var lease = new GamePxlsLease(id);
+            GamePxlsLease lease = new GamePxlsLease(id);
 
             lock (Outstanding)
             {
@@ -71,7 +71,7 @@ namespace Polaris.Res.Pxls
                 if (character == null)
                     continue;
 
-                XX.MImage image = null;
+                XX.MImage image;
                 try
                 {
                     // no_make_mi: true —— 只取原版已经建好的 MImage，绝不替它新建一个。
@@ -79,6 +79,7 @@ namespace Polaris.Res.Pxls
                 }
                 catch (Exception)
                 {
+                    // 原版还没把 MImage 建好时 getMI 可能抛异常；当作"暂时还没有图"。
                     image = null;
                 }
 
