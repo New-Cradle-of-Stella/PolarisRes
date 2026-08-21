@@ -14,7 +14,7 @@ using UnityEngine;
 
 namespace Polaris.Res
 {
-    /// <summary>一个模组的资源句柄：挂载注册 + 全部取用入口。通过 <see cref="PolarisResAPI.For"/> 取得，每个 <c>modId</c> 全进程单例。</summary>
+    /// <summary>一个模组的资源句柄：挂载注册 + 全部取用入口。通过 <see cref="ResAPI.For"/> 取得，每个 <c>modId</c> 全进程单例。</summary>
     public sealed class ModResources
     {
         private readonly MountTable mountTable = new MountTable();

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Polaris.Res
 {
     /// <summary>PolarisRes 的静态门面，模组代码的唯一入口。</summary>
-    public static class PolarisResAPI
+    public static class ResAPI
     {
         private static readonly Dictionary<string, ModResources> registry = new Dictionary<string, ModResources>();
 

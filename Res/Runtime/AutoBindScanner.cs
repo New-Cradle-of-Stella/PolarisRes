@@ -70,7 +70,7 @@ namespace Polaris.Res.Runtime
 
                 // 每个打了 [PolarisResourceFolder] 的类各用独立挂载表（按类型全限定名区分），
                 // 避免不同类的同名相对路径撞上共享 ModResources 里的同一缓存条目。
-                ModResources classResources = PolarisResAPI.For(modId + "#" + type.FullName);
+                ModResources classResources = ResAPI.For(modId + "#" + type.FullName);
                 classResources.Mount(absoluteFolder);
                 mountedFolders.Add(absoluteFolder);
                 fieldsBound += classResources.BindStaticFields(type);
