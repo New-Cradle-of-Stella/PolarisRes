@@ -7,14 +7,8 @@ using Polaris.Res.Pxls;
 namespace Polaris.Res.Runtime
 {
     /// <summary>
-    /// 回填 <see cref="PolarisGameResourceAttribute"/> 字段。
-    ///
-    /// 与 <see cref="AutoBindScanner"/> 的模组资源分支并行、互不干扰：借用原版资源不需要挂载目录，
-    /// 因此这里既不看 <see cref="PolarisResourceFolderAttribute"/>，也不建 <c>ModResources</c>。
-    ///
-    /// 借用句柄一定能拿到；原版资源当时是否已经加载完由句柄自己的 <c>IsReady</c> 反映。
-    /// 字段类型是 <c>PxlCharacter</c>/<c>MImage</c> 这类"取一次就定死"的形式时，
-    /// 绑定时还没就绪就会留空，并记一条警告——那是使用方式选错了，不是加载失败。
+    /// 回填 <see cref="PolarisGameResourceAttribute"/> 字段；与 <see cref="AutoBindScanner"/> 并行但不建 <c>ModResources</c> 也不看 <see cref="PolarisResourceFolderAttribute"/>，因为借用原版资源不需要挂载目录。
+    /// 借用句柄总能拿到，是否已加载完看句柄自己的 <c>IsReady</c>；字段类型是 <c>PxlCharacter</c>/<c>MImage</c> 这类"取一次就定死"的形式时，若绑定时还没就绪会留空并记警告（这是用法选择问题，不是加载失败）。
     /// </summary>
     internal static class GameResourceBinder
     {

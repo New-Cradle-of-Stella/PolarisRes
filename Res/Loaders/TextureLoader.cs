@@ -6,8 +6,7 @@ namespace Polaris.Res.Loaders
 {
     /// <summary>
     /// 从 PNG/JPG 字节构造 <see cref="Texture2D"/>，导入设置由 <see cref="TextureImportSettings"/> 驱动（见 <see cref="ImportMetaResolver.ResolveTexture"/>）。
-    /// 构造方式对齐游戏自己的 <c>PixelLiner.PxlImage.createFromPngRawData</c>，唯一刻意差异是 <c>wrapMode</c> 默认改为 <c>Clamp</c>（原版为 <c>Repeat</c>）以避免图集边缘渗色。
-    /// <see cref="TextureImportSettings.Format"/> 不生效——<c>Texture2D.LoadImage</c> 会按图像内容自行决定像素格式。
+    /// 构造方式对齐游戏自己的 <c>PixelLiner.PxlImage.createFromPngRawData</c>，唯一差异是 <c>wrapMode</c> 默认改 <c>Clamp</c>（原版 <c>Repeat</c>）以避免图集边缘渗色，且 <see cref="TextureImportSettings.Format"/> 不生效——<c>Texture2D.LoadImage</c> 会按图像内容自行决定像素格式。
     /// </summary>
     internal static class TextureLoader
     {

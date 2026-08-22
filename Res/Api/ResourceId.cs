@@ -4,8 +4,7 @@ namespace Polaris.Res
 {
     /// <summary>
     /// 一个资源的逻辑身份：模组命名空间 + 种类 + 挂载相对路径。
-    /// <see cref="Path"/> 构造时会被规范化（斜杠统一、去除多余斜杠、整体转小写），以避免同一物理资源因大小写不同被缓存两次。
-    /// 扩展名可省略，省略时由 <see cref="Mounts.ResourceKindExtensions.CandidateExtensions"/> 按 <see cref="Kind"/> 探测。
+    /// <see cref="Path"/> 构造时会规范化（斜杠统一、去除多余斜杠、转小写）以避免大小写不同被重复缓存；扩展名可省略，省略时由 <see cref="Mounts.ResourceKindExtensions.CandidateExtensions"/> 按 <see cref="Kind"/> 探测。
     /// </summary>
     public readonly struct ResourceId : IEquatable<ResourceId>
     {

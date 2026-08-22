@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Polaris.Res.Core
 {
     /// <summary>
-    /// 全局资源缓存主表（<see cref="ResourceId"/> → <see cref="ResourceCacheEntry"/>）。加载失败不进缓存，下次调用会重新尝试。
+    /// 全局资源缓存主表（<see cref="ResourceId"/> → <see cref="ResourceCacheEntry"/>），加载失败不进缓存、下次调用会重新尝试。
     /// 引用计数归零立即卸载；所有变更只应在主线程发生（<see cref="Lease{T}"/> 的终结器会把操作转发到主线程）。
     /// </summary>
     internal static class ResourceCache

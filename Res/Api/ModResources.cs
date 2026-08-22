@@ -33,7 +33,7 @@ namespace Polaris.Res
         // ==================== 挂载 ====================
 
         /// <summary>
-        /// 约定挂载：调用方 DLL 所在目录下、与 DLL 同名的子文件夹。必须由模组自己的代码直接调用，不能包一层再转发——否则 <see cref="Assembly.GetCallingAssembly"/> 会取到转发者的目录。
+        /// 约定挂载：调用方 DLL 所在目录下、与 DLL 同名的子文件夹；必须由模组自己的代码直接调用，不能包一层再转发，否则 <see cref="Assembly.GetCallingAssembly"/> 会取到转发者的目录。
         /// </summary>
         /// <remarks><see cref="MethodImplOptions.NoInlining"/> 防止方法被内联导致 <c>GetCallingAssembly</c> 取错调用帧。</remarks>
         [MethodImpl(MethodImplOptions.NoInlining)]
@@ -130,7 +130,7 @@ namespace Polaris.Res
         }
 
         /// <summary>
-        /// 读取 PixelLiner 角色（<c>.pxls</c>/<c>.pxl</c>）。PXLS 天生跨帧（游戏的协程解析绕不开），立即返回 <see cref="PxlsCharacterHandle"/>，订阅其 <c>Ready</c>/<c>Faulted</c> 事件获知结果。
+        /// 读取 PixelLiner 角色（<c>.pxls</c>/<c>.pxl</c>），因跨帧解析而立即返回 <see cref="PxlsCharacterHandle"/>，订阅其 <c>Ready</c>/<c>Faulted</c> 事件获知结果。
         /// 必须在 <see cref="Polaris.API.GameSessionRuntime.IsReady"/> 之后调用，否则抛 <see cref="InvalidOperationException"/>（不受严格模式影响）。
         /// </summary>
         public IResourceLease<PxlsCharacterHandle> Pxls(string path, PxlsImportSettings over = null)

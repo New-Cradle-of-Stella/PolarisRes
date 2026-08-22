@@ -3,8 +3,8 @@ using System.IO;
 
 namespace Polaris.Res.Pxls
 {
-    /// <summary>title 计算 + 外置纹理文件名候选链。两者都是纯字符串/路径运算，不碰任何游戏状态，
-    /// 拆出来单独测试/复用（<see cref="Loaders.PxlsLoadOperation"/> 是唯一调用方）。</summary>
+    /// <summary>title 计算 + 外置纹理文件名候选链，两者都是纯字符串/路径运算，不碰任何游戏状态
+    /// （<see cref="Loaders.PxlsLoadOperation"/> 是唯一调用方）。</summary>
     internal static class PxlsNaming
     {
         /// <summary><c>PxlsLoader</c> 的 title 字典是进程级全局的；<c>"pr:"</c> 前缀 + modId 避免撞原版和跨模组撞车。</summary>

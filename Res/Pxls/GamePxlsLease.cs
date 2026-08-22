@@ -4,12 +4,8 @@ using PixelLiner;
 namespace Polaris.Res.Pxls
 {
     /// <summary>
-    /// 借用一个原版 PXLS 的只读句柄。
-    ///
-    /// 与 <see cref="PxlsCharacterHandle"/> 的关键区别是所有权：那个是 PolarisRes 自己加载、
-    /// 自己释放的模组资源；这个只是把原版已经加载好的 <see cref="PxlCharacter"/> 投影出来。
-    /// 释放本句柄只撤销 PolarisEvent 自己的引用，绝不调用 <c>disposeCharacter</c> 或
-    /// <c>releaseMI</c>——原版 Bundle、PxlCharacter 和 MImage 的生命周期仍归游戏自己管。
+    /// 借用一个原版 PXLS 的只读句柄；与 <see cref="PxlsCharacterHandle"/> 的关键区别是所有权——那个是 PolarisRes 自己加载、自己释放的模组资源，这个只是把原版已经加载好的 <see cref="PxlCharacter"/> 投影出来。
+    /// 释放本句柄只撤销 PolarisEvent 自己的引用，绝不调用 <c>disposeCharacter</c> 或 <c>releaseMI</c>，原版对象的生命周期仍归游戏自己管。
     /// </summary>
     public sealed class GamePxlsLease
     {

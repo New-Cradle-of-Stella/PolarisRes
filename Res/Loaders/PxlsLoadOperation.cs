@@ -9,9 +9,8 @@ using UnityEngine;
 namespace Polaris.Res.Loaders
 {
     /// <summary>
-    /// PXLS 复合加载的状态驱动器，一个实例对应一次 <c>ModResources.Pxls(...)</c> 调用。
+    /// PXLS 复合加载的状态驱动器，一个实例对应一次 <c>ModResources.Pxls(...)</c> 调用，由 <see cref="Runtime.PxlsPump"/> 每帧调用 <see cref="Tick"/>。
     /// 只有等待 <c>PxlCharacter</c> 解析完成这一段跨帧；解析完成后剩余步骤（建纹理、绑定、注册帧名）都同步跑完。
-    /// 由 <see cref="Runtime.PxlsPump"/> 每帧调用 <see cref="Tick"/>。
     /// </summary>
     internal sealed class PxlsLoadOperation
     {

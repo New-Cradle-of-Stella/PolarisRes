@@ -5,14 +5,8 @@ using PixelLiner;
 namespace Polaris.Res.Pxls
 {
     /// <summary>
-    /// 原版 PXLS 的只读借用桥。
-    ///
-    /// 原版自己通过 <c>MTI</c>/<c>MTRX</c>/<c>PxlsLoader</c> 链把 <c>EvImg/__ev_n.pxls</c> 之类的资源
-    /// 加载进全局 title 字典；这里只按 title 查一下、把状态投影成统一句柄，既不重新加载、
-    /// 不复制 atlas，也不把原版资源重新导出到模组目录。
-    ///
-    /// 本桥可以复用资源加载类，但不调用 <c>EV.readOneLine</c>、不创建 <c>EvReader</c>、
-    /// 不提交任何 CMD 文本。
+    /// 原版 PXLS 的只读借用桥：通过 <c>MTI</c>/<c>MTRX</c>/<c>PxlsLoader</c> 已有的全局 title 字典按 title 查询、把状态投影成统一句柄，不重新加载、不复制 atlas、也不导出到模组目录。
+    /// 本桥只复用资源加载类，不调用 <c>EV.readOneLine</c>、不创建 <c>EvReader</c>、不提交任何 CMD 文本。
     /// </summary>
     public static class GamePxlsBridge
     {

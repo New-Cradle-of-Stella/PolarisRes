@@ -7,9 +7,8 @@ using Newtonsoft.Json.Linq;
 namespace Polaris.Res.Import
 {
     /// <summary>
-    /// 唯一接触 Newtonsoft.Json 的文件。用 <see cref="JObject.Merge(JToken, JsonMergeSettings)"/> + <see cref="MergeNullValueHandling.Merge"/> 实现三态语义：
-    /// JSON 键缺席=不覆盖，显式 <c>null</c>=重置为内置默认，有值=覆盖。
-    /// 引用游戏自带的 Newtonsoft.Json（非 NuGet），避免程序集身份冲突。
+    /// 唯一接触 Newtonsoft.Json 的文件（引用游戏自带版本，非 NuGet，避免程序集身份冲突）。
+    /// 用 <see cref="JObject.Merge(JToken, JsonMergeSettings)"/> + <see cref="MergeNullValueHandling.Merge"/> 实现三态语义：JSON 键缺席=不覆盖，显式 <c>null</c>=重置为内置默认，有值=覆盖。
     /// </summary>
     internal static class ImportMetaJson
     {

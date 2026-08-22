@@ -3,13 +3,7 @@ using System;
 namespace Polaris.Res
 {
     /// <summary>
-    /// 标在 static 字段上，声明"把原版已经加载的资源借用到这个字段"。
-    ///
-    /// 与 <see cref="PolarisResourceAttribute"/> 的区别只有资源来源：那个从模组自己的资源目录
-    /// 加载文件，PolarisRes 拥有并负责释放；这个只借用原版通过 <c>MTI</c>/<c>MTRX</c>/<c>PxlsLoader</c>
-    /// 链加载好的对象，PolarisRes 不拥有、不释放、也不重新导出。
-    ///
-    /// 因此它<b>不需要</b> <see cref="PolarisResourceFolderAttribute"/>：借用不涉及任何挂载目录。
+    /// 标在 static 字段上，声明"借用原版已加载好的资源到这个字段"；与 <see cref="PolarisResourceAttribute"/> 不同，这里只借用原版通过 <c>MTI</c>/<c>MTRX</c>/<c>PxlsLoader</c> 加载好的对象，不拥有、不释放，因此也不需要 <see cref="PolarisResourceFolderAttribute"/>。
     ///
     /// 字段类型决定拿到什么：
     /// <list type="bullet">
@@ -18,8 +12,7 @@ namespace Polaris.Res
     /// <item><c>XX.MImage</c>：直接拿原版图像；资源还没加载完时为 <c>null</c>。</item>
     /// </list>
     ///
-    /// 后两种是"取一次就定死"的便捷形式：绑定时原版还没加载完就会一直是 <c>null</c>。
-    /// 事件演出这类需要等待的场景应该用 <see cref="Pxls.GamePxlsLease"/>。
+    /// 后两种绑定时若原版尚未加载完会一直是 <c>null</c>，需要等待的场景应改用 <see cref="Pxls.GamePxlsLease"/>。
     /// </summary>
     /// <example>
     /// <code>

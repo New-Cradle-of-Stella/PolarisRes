@@ -3,8 +3,7 @@ using System;
 namespace Polaris.Res
 {
     /// <summary>
-    /// 标在 static 字段上，声明"资源加载完成后自动填入这个字段"；字段类型决定资源种类（<c>byte[]</c>/<c>Texture2D</c>/<c>XX.MImage</c>/<c>PxlsCharacterHandle</c>/<c>AudioClip</c>/<c>VideoHandle</c>）。
-    /// 类本身必须先打 <see cref="PolarisResourceFolderAttribute"/>，否则不会被 <see cref="Runtime.AutoBindScanner"/> 自动绑定，只会记警告。
+    /// 标在 static 字段上，声明"资源加载完成后自动填入这个字段"；字段类型决定资源种类（<c>byte[]</c>/<c>Texture2D</c>/<c>XX.MImage</c>/<c>PxlsCharacterHandle</c>/<c>AudioClip</c>/<c>VideoHandle</c>），类本身必须先打 <see cref="PolarisResourceFolderAttribute"/>，否则不会被 <see cref="Runtime.AutoBindScanner"/> 自动绑定（只记警告）。
     /// 填入方式等价于 <see cref="ModResources.Own"/>：一次性获取、永不释放、生命周期与模组绑定。
     /// </summary>
     /// <example>
